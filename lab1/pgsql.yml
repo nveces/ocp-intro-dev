@@ -2,10 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgresql
+  #name: postgresql
+  name: petclinic-database
 spec:
   selector:
-    app: postgresql
+    #app: postgresql
+    app: petclinic-database
   ports:
     - name: pgsql
       port: 5432
@@ -14,18 +16,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgresql
+  # name: postgresql
+  name: petclinic-database
 spec:
   selector:
     matchLabels:
-      app: postgresql
+      # app: postgresql
+      app: petclinic-database
   template:
     metadata:
       labels:
-        app: postgresql
+        # app: postgresql
+        app: petclinic-database
     spec:
       containers:
-        - name: postgresql
+        # - name: postgresql
+        - name: petclinic-database
           image: quay.io/redhatdemo/openshift-pgsql12-primary:centos7
           imagePullPolicy: Always
           resources:
@@ -37,11 +43,14 @@ spec:
               containerPort: 5432
           env:
             - name: PG_USER_PASSWORD
-              value: developer
+              # value: developer
+              value: mysecretpassword
             - name: PG_USER_NAME
-              value: developer
+              # value: developer
+              value: petclinic
             - name: PG_DATABASE
-              value: mydb
+              # value: mydb
+              value: petclinic
             - name: PG_NETWORK_MASK
               value: all
             - name: PG_MAX_CONNECTIONS

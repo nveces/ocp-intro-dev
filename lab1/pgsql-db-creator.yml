@@ -13,18 +13,23 @@ spec:
           imagePullPolicy: Always
           env:
             - name: PGHOST
-              value: postgresql
+              # value: postgresql
+              value: petclinic-database
             - name: PGDATABASE
-              value: mydb
+              # value: mydb
+              value: petclinic
             - name: PGUSER
-              value: developer
+              # value: developer
+              value: petclinic
             - name: PGPASSWORD
-              value: developer
+              # value: developer
+              value: mysecretpassword
 
           command: ["/usr/pgsql-12/bin/psql"]
           args:
             [
-              "--dbname=mydb",
+              # "--dbname=mydb",
+              "--dbname=petclinic",
               "--no-password",
             ]
       restartPolicy: Never

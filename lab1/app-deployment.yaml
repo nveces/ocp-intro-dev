@@ -17,7 +17,11 @@ spec:
     spec:
       containers:
         - name: quarkus-petclinic
-          image: 'quay.io/rhdevelopers/quarkus-petclinic:1.0.0'
+          # Esto funciona-----
+          #image: 'quay.io/rhdevelopers/quarkus-petclinic:1.0.0'
+          # Esto funciona-----
+          image: 'quay.io/rhn_gps_splatas/quarkus-petclinic:in-mem-blue-ocp'
+          # Esto funciona-----
           ports:
             - containerPort: 8080
               protocol: TCP
