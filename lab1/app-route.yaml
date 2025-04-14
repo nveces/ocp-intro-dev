@@ -11,4 +11,8 @@ spec:
     weight: 100
   port:
     targetPort: 8080-tcp
+  # Fix -----------------
+  tls:
+    termination: edge
+  # Fix -----------------    
   wildcardPolicy: None
